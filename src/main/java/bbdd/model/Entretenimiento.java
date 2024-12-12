@@ -3,14 +3,7 @@ package bbdd.model;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 // @TODO Realiza todas las anotaciones necesarias en esta clase para que
 // que sus instancias sean guardadas en la base de datos utilizando
@@ -18,12 +11,20 @@ import javax.persistence.Table;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
-public class Entretenimiento {
 
+@Entity
+@Table(name = "entretenimientos")
+
+public class Entretenimiento {
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "nombre",nullable = false)
     private String nombre;
 
+    @OneToMany(mappedBy = "entretenimiento", cascade = CascadeType.ALL)
     private Set<Gasto> gastos = new HashSet<>();
 
     public Entretenimiento() {

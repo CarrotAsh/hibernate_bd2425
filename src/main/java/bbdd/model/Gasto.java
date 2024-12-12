@@ -1,14 +1,6 @@
 package bbdd.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 // @TODO Realiza todas las anotaciones necesarias en esta clase para que
@@ -17,14 +9,23 @@ import javax.persistence.Table;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
-public class Gasto {
 
+@Entity
+@Table(name = "gastos")
+
+public class Gasto {
+    @Id
+    @GeneratedValue
+    @Column(name = "id")
     private Long id;
 
+    @OneToOne
     private Pasajero pasajero;
 
+    @OneToOne
     private Entretenimiento entretenimiento;
 
+    @Column(name = "cantidad",nullable = false)
     private Integer cantidad;
 
     public Gasto() {

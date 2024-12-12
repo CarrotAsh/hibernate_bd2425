@@ -21,17 +21,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "pasajero")
+
 public class Pasajero {
 
     @Id
-    @Column(name = "Id")
     @GeneratedValue
+    @Column(name = "Id")
     private Long id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @OneToMany
+    @OneToMany(mappedBy = "pasajero", cascade = CascadeType.ALL)
     private Set<Gasto> gastos = new HashSet<>();
 
 
