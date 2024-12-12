@@ -26,7 +26,7 @@ public class Pasajero {
 
     @Id
     @GeneratedValue
-    @Column(name = "Id")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "nombre", nullable = false)

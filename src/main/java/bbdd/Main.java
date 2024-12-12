@@ -18,6 +18,7 @@ import bbdd.model.Pasajero;
 import bbdd.model.Entretenimiento;
 import bbdd.model.Gasto;
 
+// NOMBRE DE LA BBDD DEL XML
 
 public class Main 
 {
@@ -39,7 +40,17 @@ public class Main
         // @TODO Crear un nuevo pasajero llamado "Din Djarin" y un nuevo entretenimiento
         // llamado "Bounty Hunting" y guardarlos en la base de datos. Añade un gasto de
         // 100 a "Din Djarin" para "Bounty Hunting".
-        
+
+        Pasajero dinDjarin = new Pasajero("Din Djarin");
+        Entretenimiento bountyHunting = new Entretenimiento("Bounty Hunting");
+        Gasto gasto = new Gasto(dinDjarin, bountyHunting, 100);
+
+        session.beginTransaction();
+        session.saveOrUpdate(dinDjarin);
+        session.saveOrUpdate(bountyHunting);
+        session.saveOrUpdate(gasto);
+        session.getTransaction().commit();
+
 
         // @TODO Leer el fichero CSV gastos.csv que se encuentra en el directorio "resources" y 
         // recorrerlo usando CSVParser para crear los pasajeros, entretenimientos y gastos que
