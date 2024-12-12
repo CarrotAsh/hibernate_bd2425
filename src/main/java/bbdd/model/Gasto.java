@@ -1,5 +1,7 @@
 package bbdd.model;
 
+import net.bytebuddy.dynamic.loading.InjectionClassLoader;
+
 import javax.persistence.*;
 
 
@@ -15,7 +17,7 @@ import javax.persistence.*;
 
 public class Gasto {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     @Column(name = "id")
     private Long id;
 

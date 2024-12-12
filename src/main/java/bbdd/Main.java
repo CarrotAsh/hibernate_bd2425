@@ -34,6 +34,8 @@ public class Main
 
         Session session = sessionFactory.openSession();
 
+
+
         // @TODO Crear un nuevo pasajero llamado "Din Djarin" y un nuevo entretenimiento
         // llamado "Bounty Hunting" y guardarlos en la base de datos. Añade un gasto de
         // 100 a "Din Djarin" para "Bounty Hunting".
