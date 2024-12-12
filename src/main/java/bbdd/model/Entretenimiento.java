@@ -39,12 +39,12 @@ public class Entretenimiento {
         return id;
     }
 
-    public String getNombre() { 
-        return nombre; 
+    public String getNombre() {
+        return nombre;
     }
-    
-    public Set<Gasto> getGastos() { 
-        return gastos; 
+
+    public Set<Gasto> getGastos() {
+        return gastos;
     }
 
 }

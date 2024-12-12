@@ -52,8 +52,8 @@ public class Pasajero {
         return nombre;
     }
 
-    public Set<Gasto> getGastos() { 
-        return gastos; 
+    public Set<Gasto> getGastos() {
+        return gastos;
     }
 
 }

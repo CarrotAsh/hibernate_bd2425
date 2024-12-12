@@ -40,20 +40,21 @@ public class Gasto {
         this.cantidad = cantidad;
     }
 
-    public Long getId() { 
+    public Long getId() {
         return id;
     }
-    
-    public Pasajero getPasajero() { 
-        return pasajero; 
+
+    public Pasajero getPasajero() {
+        return pasajero;
     }
 
-    public Entretenimiento getEntretenimiento() { 
-        return entretenimiento; 
+    public Entretenimiento getEntretenimiento() {
+        return entretenimiento;
     }
 
-    public Integer getCantidad() { 
-        return cantidad; 
+    public Integer getCantidad() {
+        return cantidad;
     }
-    
+
 }
+
