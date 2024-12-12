@@ -1,0 +1,2 @@
+El nombre del schema en el que hibernate creará la base de datos es: bbdd_prac2425_hibernate
+Se encuentra en la línea 17 del fichero hibernate.cfg.xml

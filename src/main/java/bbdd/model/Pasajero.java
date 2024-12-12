@@ -18,13 +18,22 @@ import javax.persistence.Table;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
+
+@Entity
+@Table(name = "pasajero")
 public class Pasajero {
-    
+
+    @Id
+    @Column(name = "Id")
+    @GeneratedValue
     private Long id;
 
+    @Column(name = "nombre", nullable = false)
     private String nombre;
 
+    @OneToMany
     private Set<Gasto> gastos = new HashSet<>();
+
 
     public Pasajero() {
         // requerido por Hibernate
