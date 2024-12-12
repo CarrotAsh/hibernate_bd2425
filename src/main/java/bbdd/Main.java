@@ -43,6 +43,7 @@ public class Main
         // recorrerlo usando CSVParser para crear los pasajeros, entretenimientos y gastos que
         // en él se encuentran. Dichos gastos deberán ser asignados al pasajero/a y al entretenimiento 
         // correspondientes. Se deben guardar todos estos datos en la base de datos.
+        //PRUEBA
         
 
 
