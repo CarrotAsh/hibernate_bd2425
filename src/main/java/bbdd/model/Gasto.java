@@ -17,14 +17,23 @@ import javax.persistence.Table;
 // enunciado de la práctica. No es necesario modificar el código de esta
 // clase, únicamente debes hacer las anotaciones que consideres
 // necesarias.
+
+@Entity
+@Table(name = "gastos")
 public class Gasto {
 
+    @Id
+    @Column(name = "Id")
+    @GeneratedValue
     private Long id;
 
+    @Column(name = "pasajero")
     private Pasajero pasajero;
 
+    @Column(name = "entretenimiento")
     private Entretenimiento entretenimiento;
 
+    @Column(name = "cantidad")
     private Integer cantidad;
 
     public Gasto() {
