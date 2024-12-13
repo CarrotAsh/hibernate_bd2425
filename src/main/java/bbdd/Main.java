@@ -41,14 +41,14 @@ public class Main
         // llamado "Bounty Hunting" y guardarlos en la base de datos. Añade un gasto de
         // 100 a "Din Djarin" para "Bounty Hunting".
 
-        Pasajero dinDjarin = new Pasajero("Din Djarin");
-        Entretenimiento bountyHunting = new Entretenimiento("Bounty Hunting");
-        Gasto gasto = new Gasto(dinDjarin, bountyHunting, 100);
-
         session.beginTransaction();
+        Pasajero dinDjarin = new Pasajero("Din Djarin");
         session.saveOrUpdate(dinDjarin);
+        Entretenimiento bountyHunting = new Entretenimiento("Bounty Hunting");
         session.saveOrUpdate(bountyHunting);
+        Gasto gasto = new Gasto(dinDjarin, bountyHunting, 100);
         session.saveOrUpdate(gasto);
+
         session.getTransaction().commit();
 
 
@@ -57,8 +57,9 @@ public class Main
         // en él se encuentran. Dichos gastos deberán ser asignados al pasajero/a y al entretenimiento 
         // correspondientes. Se deben guardar todos estos datos en la base de datos.
         //PRUEBA
-        
 
+
+        
 
         session.close();
 
