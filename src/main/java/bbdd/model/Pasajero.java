@@ -20,7 +20,7 @@ import javax.persistence.Table;
 // necesarias.
 
 @Entity
-@Table(name = "pasajero")
+@Table(name = "pasajeros")
 
 public class Pasajero {
 
@@ -57,3 +57,5 @@ public class Pasajero {
     }
 
 }
+
+
