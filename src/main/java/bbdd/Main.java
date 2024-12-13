@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -18,7 +19,6 @@ import bbdd.model.Pasajero;
 import bbdd.model.Entretenimiento;
 import bbdd.model.Gasto;
 
-// NOMBRE DE LA BBDD DEL XML
 
 public class Main 
 {
@@ -57,14 +57,32 @@ public class Main
         // correspondientes. Se deben guardar todos estos datos en la base de datos.
         //PRUEBA
 
+        String csvData = "resources/gastos.csv";
+        CSVParser parser = CSVParser.parse(csvData, CSVFormat.RFC4180);
+        try(){
 
+            session.beginTransaction();
 
+            for (CSVRecord csvRecord : csvparser) {
+                String pasajeroCSV = csvRecord.get("Pasajero");
+                String entretenimientoCSV = csvRecord.get("Entretenimiento");
+                double gastoCSV = Double.parseDouble(csvRecord.get("Gasto"));
 
+                Pasajero pasajero = new Pasajero(pasajeroCSV);
+                pasajero = new Pasajero(pasajeroCSV);
+                session.saveOrUpdate(pasajero);
 
-        
+                Entretenimiento entretenimiento = new Entretenimiento(entretenimientoCSV);
+                entretenimiento = new Entretenimiento(entretenimientoCSV);
+                session.saveOrUpdate(entretenimiento);
 
+                Gasto nuevoGasto = new Gasto(pasajero, entretenimiento,gastoCSV);
+                session.saveOrUpdate(nuevoGasto);
+            }
+        }catch (IOException e){
+            System.err.println("Error al leer el archivo CSV: " + e.getMessage());
+        }
         session.close();
-
     }
 }
 
