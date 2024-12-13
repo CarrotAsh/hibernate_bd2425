@@ -48,7 +48,6 @@ public class Main
         session.saveOrUpdate(bountyHunting);
         Gasto gasto = new Gasto(dinDjarin, bountyHunting, 100);
         session.saveOrUpdate(gasto);
-
         session.getTransaction().commit();
 
 
@@ -57,6 +56,9 @@ public class Main
         // en él se encuentran. Dichos gastos deberán ser asignados al pasajero/a y al entretenimiento 
         // correspondientes. Se deben guardar todos estos datos en la base de datos.
         //PRUEBA
+
+
+
 
 
         
