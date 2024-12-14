@@ -20,10 +20,10 @@ import bbdd.model.Entretenimiento;
 import bbdd.model.Gasto;
 
 
-public class Main 
-{
-    public static void main( String[] args )
-    {
+public class Main {
+    private static final String GASTOS_CSV = "src/main/resources/gastos.csv";
+
+    public static void main(String[] args) {
 
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure()
@@ -57,32 +57,38 @@ public class Main
         // correspondientes. Se deben guardar todos estos datos en la base de datos.
         //PRUEBA
 
-        String csvData = "resources/gastos.csv";
-        CSVParser parser = CSVParser.parse(csvData, CSVFormat.RFC4180);
-        try(){
+
+        try (Reader reader = Files.newBufferedReader(Paths.get(GASTOS_CSV));
+             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader())) {
 
             session.beginTransaction();
 
-            for (CSVRecord csvRecord : csvparser) {
-                String pasajeroCSV = csvRecord.get("Pasajero");
-                String entretenimientoCSV = csvRecord.get("Entretenimiento");
-                double gastoCSV = Double.parseDouble(csvRecord.get("Gasto"));
+            for (CSVRecord csvRecord : csvParser) {
+                String pasajeroCSV = csvRecord.get("pasajero");
+                String entretenimientoCSV = csvRecord.get("entretenimiento");
+                String cantidadCSV_String = csvRecord.get("cantidad");
+                int cantidadCSV = Integer.parseInt(cantidadCSV_String);
 
+                // Crear y guardar objetos en la base de datos
                 Pasajero pasajero = new Pasajero(pasajeroCSV);
-                pasajero = new Pasajero(pasajeroCSV);
                 session.saveOrUpdate(pasajero);
 
                 Entretenimiento entretenimiento = new Entretenimiento(entretenimientoCSV);
-                entretenimiento = new Entretenimiento(entretenimientoCSV);
                 session.saveOrUpdate(entretenimiento);
 
-                Gasto nuevoGasto = new Gasto(pasajero, entretenimiento,gastoCSV);
+                Gasto nuevoGasto = new Gasto(pasajero, entretenimiento, cantidadCSV);
                 session.saveOrUpdate(nuevoGasto);
             }
-        }catch (IOException e){
+
+            session.getTransaction().commit();
+
+        } catch (IOException e) {
             System.err.println("Error al leer el archivo CSV: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error general: " + e.getMessage());
+        } finally {
+            session.close();
         }
-        session.close();
     }
 }
 
