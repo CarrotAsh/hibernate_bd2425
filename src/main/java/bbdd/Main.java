@@ -69,7 +69,6 @@ public class Main {
                 String cantidadCSV_String = csvRecord.get("cantidad");
                 int cantidadCSV = Integer.parseInt(cantidadCSV_String);
 
-                // Crear y guardar objetos en la base de datos
                 Pasajero pasajero = new Pasajero(pasajeroCSV);
                 session.saveOrUpdate(pasajero);
 
